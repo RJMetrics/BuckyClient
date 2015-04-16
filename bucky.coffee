@@ -193,7 +193,7 @@ exportDef = ->
 
     req.open 'POST', options.host, true
 
-    req.setRequestHeader 'Content-Type', 'text/plain'
+    req.setRequestHeader 'Content-Type', 'html/plain'
 
     req.addEventListener 'load', ->
       updateLatency(now() - sendStart)
