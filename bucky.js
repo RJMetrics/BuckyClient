@@ -176,7 +176,7 @@
         track: false
       };
       req.open('POST', options.host, true);
-      req.setRequestHeader('Content-Type', 'html/plain');
+      req.setRequestHeader('Content-Type', 'text/html');
       req.addEventListener('load', function() {
         return updateLatency(now() - sendStart);
       }, false);
