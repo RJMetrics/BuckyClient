@@ -175,7 +175,7 @@
       req.bucky = {
         track: false
       };
-      req.open('POST', "" + options.host + "/v1/send", true);
+      req.open('POST', options.host, true);
       req.setRequestHeader('Content-Type', 'text/plain');
       req.addEventListener('load', function() {
         return updateLatency(now() - sendStart);
@@ -521,7 +521,7 @@
               return;
             }
             url = self.getFullUrl(url);
-            stat = self.urlToKey(url, type, root);
+            stat = self.urlToKey(url, type, requests.urlToKey(document.location.toString()) + '.requests');
             send(stat, dur, 'timer');
             self.sendReadyStateTimes(stat, readyStateTimes);
             if ((request != null ? request.status : void 0) != null) {

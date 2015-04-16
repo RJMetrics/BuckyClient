@@ -191,7 +191,7 @@ exportDef = ->
     # by updateLatency.
     req.bucky = {track: false}
 
-    req.open 'POST', "#{ options.host }/v1/send", true
+    req.open 'POST', options.host, true
 
     req.setRequestHeader 'Content-Type', 'text/plain'
 
@@ -496,7 +496,8 @@ exportDef = ->
             return
 
           url = self.getFullUrl url
-          stat = self.urlToKey url, type, root
+          #we always want to use the current page as the request key
+          stat = self.urlToKey url, type, requests.urlToKey(document.location.toString()) + '.requests'
 
           send(stat, dur, 'timer')
 
